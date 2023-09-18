@@ -1,4 +1,4 @@
-package proyectotransversal70.AccesoADatos;
+package misionImposible.AccesoADatos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import proyectotransversal70.entidades.Alumno;
-import proyectotransversal70.entidades.Inscripcion;
-import proyectotransversal70.entidades.Materia;
+import misionImposible.entidades.Alumno;
+import misionImposible.entidades.Inscripcion;
+import misionImposible.entidades.Materia;
 
 public class InscripcionData {
     private Connection con=null;

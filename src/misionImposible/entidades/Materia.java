@@ -1,4 +1,4 @@
-package proyectotransversal70.entidades;
+package misionImposible.entidades;
 
 public class Materia {
     private int idMateria;

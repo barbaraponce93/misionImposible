@@ -1,5 +1,5 @@
 
-package proyectotransversal70.AccesoADatos;
+package misionImposible.AccesoADatos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

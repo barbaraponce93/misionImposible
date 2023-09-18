@@ -1,5 +1,5 @@
 
-package proyectotransversal70.entidades;
+package misionImposible.entidades;
 
 
 public class Inscripcion {

@@ -1,5 +1,5 @@
 
-package proyectotransversal70.Vistas;
+package misionImposible.Vistas;
 
 import java.awt.event.ItemEvent;
 import java.sql.Connection;
@@ -8,12 +8,12 @@ import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 import jdk.nashorn.internal.runtime.arrays.ArrayLikeIterator;
-import proyectotransversal70.AccesoADatos.AlumnoData;
-import proyectotransversal70.AccesoADatos.Conexion;
-import proyectotransversal70.AccesoADatos.InscripcionData;
-import proyectotransversal70.entidades.Alumno;
-import proyectotransversal70.entidades.Inscripcion;
-import proyectotransversal70.entidades.Materia;
+import misionImposible.AccesoADatos.AlumnoData;
+import misionImposible.AccesoADatos.Conexion;
+import misionImposible.AccesoADatos.InscripcionData;
+import misionImposible.entidades.Alumno;
+import misionImposible.entidades.Inscripcion;
+import misionImposible.entidades.Materia;
 
 
 public class FormularioDeInscripcion extends javax.swing.JInternalFrame {

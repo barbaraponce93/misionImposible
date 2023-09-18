@@ -1,5 +1,5 @@
 
-package proyectotransversal70.AccesoADatos;
+package misionImposible.AccesoADatos;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import proyectotransversal70.entidades.Alumno;
+import misionImposible.entidades.Alumno;
 
 
 public class AlumnoData {

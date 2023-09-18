@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectotransversal70.vistas;
+package misionImposible.Vistas;
 
 
-import proyectotransversal70.Vistas.FormularioDeInscripcion;
+import misionImposible.Vistas.FormularioDeInscripcion;
 
 
 
