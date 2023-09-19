@@ -130,7 +130,7 @@ public class MateriaData {
   
   public List<Materia> listarMaterias(){
     
-    String sql = "SELECT nombre, año, estado FROM materia WHERE estado =1";
+    String sql = "SELECT idMateria,nombre, año, estado FROM materia WHERE estado =1";
     ArrayList<Materia> materias = new ArrayList<>();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
