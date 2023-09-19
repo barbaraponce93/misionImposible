@@ -1,0 +1,7 @@
+proyectotransversal70.Vistas.FormularioDeInscripcion
+proyectotransversal70.Vistas.FormularioDeInscripcion$2
+proyectotransversal70.Vistas.FormularioDeInscripcion$1
+proyectotransversal70.Vistas.FormularioDeInscripcion$4
+proyectotransversal70.Vistas.FormularioDeInscripcion$3
+proyectotransversal70.Vistas.FormularioDeInscripcion$6
+proyectotransversal70.Vistas.FormularioDeInscripcion$5

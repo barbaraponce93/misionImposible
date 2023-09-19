@@ -1,0 +1,4 @@
+proyectotransversal70.vistas.MenuPrincipal$3
+proyectotransversal70.vistas.MenuPrincipal$2
+proyectotransversal70.vistas.MenuPrincipal$1
+proyectotransversal70.vistas.MenuPrincipal
