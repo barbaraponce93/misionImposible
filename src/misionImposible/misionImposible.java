@@ -68,7 +68,7 @@ public class misionImposible {
         Materia ingles = md.buscarMateria(3);
         Inscripcion ins = new Inscripcion(6,sofi, ingles);//idA,idm,nota
 
-          // iData.guardarIscripcion(ins);                                               //Prueba guardar incripcion
+        //  iData.guardarIscripcion(ins);                                               //Prueba guardar incripcion
         //  iData.borrarInscripcionMateriaAlumno(11, 1);
 //     iData.borrarInscripcionMateriaAlumno(26, 5) ;                                   //Prueba borrar enscripcion por alumno
        //        iData.actualizarNota(26, 1, 10);                                              // Prueba Actualizar nota

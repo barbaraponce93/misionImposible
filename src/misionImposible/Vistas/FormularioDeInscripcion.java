@@ -11,6 +11,7 @@ import jdk.nashorn.internal.runtime.arrays.ArrayLikeIterator;
 import misionImposible.AccesoADatos.AlumnoData;
 import misionImposible.AccesoADatos.Conexion;
 import misionImposible.AccesoADatos.InscripcionData;
+import misionImposible.AccesoADatos.MateriaData;
 import misionImposible.entidades.Alumno;
 import misionImposible.entidades.Inscripcion;
 import misionImposible.entidades.Materia;
@@ -100,6 +101,11 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTabla);
 
         jBInscribir.setText("Inscribir");
+        jBInscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBInscribirActionPerformed(evt);
+            }
+        });
 
         jBsalir.setText("Salir");
 
@@ -261,6 +267,19 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
             
         
     }//GEN-LAST:event_jTablaMouseClicked
+
+    private void jBInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInscribirActionPerformed
+        AlumnoData ad = new AlumnoData();
+        MateriaData md = new MateriaData();
+        InscripcionData iData = new InscripcionData();
+
+        Inscripcion inscripcion = new Inscripcion();
+        Alumno sofi = ad.buscarAlumno(26);
+        Materia ingles = md.buscarMateria(3);
+        Inscripcion ins = new Inscripcion(6,sofi, ingles);//idA,idm,nota
+
+          iData.guardarIscripcion(ins);    
+    }//GEN-LAST:event_jBInscribirActionPerformed
 
     
 
