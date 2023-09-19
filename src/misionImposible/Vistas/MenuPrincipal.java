@@ -7,6 +7,9 @@ package misionImposible.Vistas;
 
 
 import misionImposible.Vistas.FormularioDeInscripcion;
+import misionImposible.Vistas.ListaAlumnosporMateria;
+
+
 
 
 
@@ -41,7 +44,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu11 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 600));
 
         setTitle("Gestión \"Universidad\"");
 
@@ -83,8 +85,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu9.setText("Consultas");
+        jMenu9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu9ActionPerformed(evt);
+            }
+        });
 
         jMenuItem5.setText("Alumnos por Materia");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu9.add(jMenuItem5);
 
         jMenuBar1.add(jMenu9);
@@ -127,6 +139,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenu9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu9ActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jMenu9ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ListaAlumnosporMateria lista=new ListaAlumnosporMateria();
+        lista.setVisible(true);
+        escritorio.add(lista);
+        escritorio.moveToFront(lista);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
