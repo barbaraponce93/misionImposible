@@ -135,9 +135,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
     
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
- // TODO add your handling cod
-        
-
+       
+        escritorio.removeAll();
+        escritorio.repaint();
+        gestionAlumno ventanaAlumno = new gestionAlumno();
+        ventanaAlumno.setVisible(true);   
+        escritorio.add(ventanaAlumno);
+        escritorio.moveToFront(ventanaAlumno);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenu9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu9ActionPerformed
