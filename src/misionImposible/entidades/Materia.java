@@ -10,6 +10,10 @@ public class Materia {
         
     }
 
+    public Materia(int idMateria) {
+        this.idMateria = idMateria;
+    }
+
     public Materia(int idMateria, String nombre, int anioMateria, boolean activo) {
         this.idMateria = idMateria;
         this.nombre = nombre;
