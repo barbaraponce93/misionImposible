@@ -10,6 +10,8 @@ import javax.swing.table.DefaultTableModel;
 import misionImposible.AccesoADatos.MateriaData;
 import misionImposible.entidades.Materia;
 import misionImposible.AccesoADatos.Conexion;
+import misionImposible.AccesoADatos.InscripcionData;
+import misionImposible.entidades.Alumno;
 
 /**
  *
@@ -23,7 +25,7 @@ private DefaultTableModel modelo=new DefaultTableModel();
     public ListaAlumnosporMateria() {
         initComponents();
         armarCabecera();
-       // cargarCombo();
+        cargarCombo();
     }
 
     /**
@@ -45,7 +47,6 @@ private DefaultTableModel modelo=new DefaultTableModel();
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Seleccione una materia");
 
-        jcbMaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcbMaterias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbMateriasActionPerformed(evt);
@@ -116,10 +117,26 @@ private DefaultTableModel modelo=new DefaultTableModel();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jcbMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMateriasActionPerformed
-        // TODO add your handling code here:
+       Object selectedItem = jcbMaterias.getSelectedItem();
+        if (selectedItem instanceof Materia) {
+            Materia matSeleccionada = (Materia) selectedItem;
+            
+         InscripcionData iData = new InscripcionData();
+            Materia alumnoSeleccionado = (Materia) jcbMaterias.getSelectedItem();
+            if (matSeleccionada != null) {
+                ArrayList<Alumno> listaAlumnos  = new ArrayList<>();   
+                limpiarTabla();
+            }    
+            for (Alumno alumno: iData.obtenerAlumnosXMateria(matSeleccionada.getIdMateria())) {
+                cargarDatos(alumno);
+            
+            
+            
+    }                      
+        
     }//GEN-LAST:event_jcbMateriasActionPerformed
 
-
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -147,4 +164,18 @@ private void cargarCombo(){
        jcbMaterias.addItem(materia.toString());
         }
 }
+
+private void limpiarTabla() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) jtAlumnos.getModel();
+        modeloTabla.setRowCount(0);
+    }
+
+private void cargarDatos(Alumno alumno) {
+        modelo.addRow(new Object[]{alumno.getIdAlumno(),
+            alumno.getDni(), alumno.getApellido(), alumno.getNombre()});
+    }
+
+
+
+
 }
