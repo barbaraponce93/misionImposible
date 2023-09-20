@@ -91,7 +91,7 @@ public class misionImposible {
 //   
 //        }
 //        
-//        for(Materia mate: iData.obtenerMateriaNOCursadas(3)){                        //prueba listar materia NO cursadas por alumno
+    //for(Materia mate: iData.obtenerMateriaNOCursadas(3)){                        //prueba listar materia NO cursadas por alumno
 //            System.out.println("Materias con cursadas:");
 //        System.out.println("id: "+mate.getIdMateria());
 //        System.out.println("Nombre de la materia: "+mate.getNombre());

@@ -5,6 +5,7 @@ package misionImposible.Vistas;
 import java.awt.event.ItemEvent;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
@@ -49,6 +50,8 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
         jBInscribir = new javax.swing.JButton();
         jBsalir = new javax.swing.JButton();
         jBAnularInscripcion = new javax.swing.JButton();
+
+        setPreferredSize(new java.awt.Dimension(500, 479));
 
         jLabel1.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel1.setText("Formulario de Inscripción");
@@ -109,6 +112,11 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
         });
 
         jBsalir.setText("Salir");
+        jBsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBsalirActionPerformed(evt);
+            }
+        });
 
         jBAnularInscripcion.setText("Anular Inscripcion");
         jBAnularInscripcion.addActionListener(new java.awt.event.ActionListener() {
@@ -138,7 +146,7 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
                                 .addGap(35, 35, 35)
                                 .addComponent(jBsalir))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(309, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -146,7 +154,7 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
                                 .addGap(19, 19, 19)
                                 .addComponent(ListaAlumnosComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(320, 320, 320)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE))
+                                .addComponent(jSeparator1))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -194,15 +202,16 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ListaAlumnosComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaAlumnosComboBoxActionPerformed
-        Object selectedItem = ListaAlumnosComboBox.getSelectedItem();
+       Object selectedItem = ListaAlumnosComboBox.getSelectedItem();
+      
         if (selectedItem instanceof Alumno) {
             Alumno alumnoSeleccionado = (Alumno) selectedItem;
             limpiarTabla();
     }//GEN-LAST:event_ListaAlumnosComboBoxActionPerformed
     }
     private void jRmateriasInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRmateriasInscriptasActionPerformed
-
-        //  jRMatNoInscriptas.setEnabled(false); // Inhabilita el otro botón de radio
+            jBInscribir.setEnabled(false);
+          jBAnularInscripcion.setEnabled(true);
 
             InscripcionData iData = new InscripcionData();
             Alumno alumnoSeleccionado = (Alumno) ListaAlumnosComboBox.getSelectedItem();
@@ -220,11 +229,13 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jRmateriasInscriptasActionPerformed
 
     private void jRMatNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRMatNoInscriptasActionPerformed
-      
+       jBAnularInscripcion.setEnabled(false);
+       jBInscribir.setEnabled(true);
+       
             InscripcionData iData = new InscripcionData();
             Alumno alumnoSeleccionado = (Alumno) ListaAlumnosComboBox.getSelectedItem();
             if (alumnoSeleccionado != null) {
-                ArrayList<Inscripcion> inscripciones = new ArrayList<>();
+              //  ArrayList<Inscripcion> inscripciones = new ArrayList<>();
 
             }
               limpiarTabla();
@@ -247,7 +258,7 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
         
          iData.borrarInscripcionMateriaAlumno(idAlumno, idMateria);
        
-        
+       actualizarTablaMateriasInscriptas(alumnoSeleccionado);//despues de anular la ins actualiza la tabla de las materias inscriptas actuales
         
     }//GEN-LAST:event_jBAnularInscripcionActionPerformed
 
@@ -256,31 +267,38 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jRmateriasInscriptasItemStateChanged
 
     private void jTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablaMouseClicked
-        int filaSeleccionada=jTabla.getSelectedRow();
-        if(filaSeleccionada!=-1){//si hay una fila seleccionada va a ser diferente a 1
-    /*oBTENGO ID MATERIA*/int idMateria=(Integer)jTabla.getValueAt(filaSeleccionada, 0);//getValue extrae el dato de la fila selec y lo extrae un Objeto por eso se debe castear
-        }
-          
-            InscripcionData iData = new InscripcionData();
-            Alumno alumnoSeleccionado = (Alumno) ListaAlumnosComboBox.getSelectedItem();
-            alumnoSeleccionado.getIdAlumno();//obtengo id alumno
-            
+//        int filaSeleccionada=jTabla.getSelectedRow();
+//        if(filaSeleccionada!=-1){//si hay una fila seleccionada va a ser diferente a 1
+//    /*oBTENGO ID MATERIA*/int idMateria=(Integer)jTabla.getValueAt(filaSeleccionada, 0);//getValue extrae el dato de la fila selec y lo extrae un Objeto por eso se debe castear
+//        }
+//          
+//      //      InscripcionData iData = new InscripcionData();
+//            Alumno alumnoSeleccionado = (Alumno) ListaAlumnosComboBox.getSelectedItem();
+//            alumnoSeleccionado.getIdAlumno();//obtengo id alumno
+//            
             
         
     }//GEN-LAST:event_jTablaMouseClicked
 
     private void jBInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInscribirActionPerformed
-        AlumnoData ad = new AlumnoData();
-        MateriaData md = new MateriaData();
         InscripcionData iData = new InscripcionData();
+        Alumno alumnoSeleccionado = (Alumno) ListaAlumnosComboBox.getSelectedItem();
+        int filaSeleccionada = jTabla.getSelectedRow();
 
-        Inscripcion inscripcion = new Inscripcion();
-        Alumno sofi = ad.buscarAlumno(26);
-        Materia ingles = md.buscarMateria(3);
-        Inscripcion ins = new Inscripcion(6,sofi, ingles);//idA,idm,nota
+        int idMateria = (Integer) jTabla.getValueAt(filaSeleccionada, 0);
 
-          iData.guardarIscripcion(ins);    
+        Materia materiaSeleccionada = new Materia(idMateria);
+        Inscripcion insc = new Inscripcion(alumnoSeleccionado, materiaSeleccionada);
+
+        iData.guardarIscripcion(insc);
+        actualizarTablaMateriasNoInscriptas(alumnoSeleccionado);// despues de inscribir actualiza la tabla de las materias no inscriptas
+       
+
     }//GEN-LAST:event_jBInscribirActionPerformed
+
+    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
+       dispose();
+    }//GEN-LAST:event_jBsalirActionPerformed
 
     
 
@@ -322,8 +340,10 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
     }
 
     private void cargarDatos(Materia materia) {// a partir delbuton rsdio seleccionado mostrara estos datos
-        modeloTabla.addRow(new Object[]{materia.getIdMateria(),
-            materia.getNombre(), materia.getAnioMateria()
+        modeloTabla.addRow(new Object[]{
+            materia.getIdMateria(),
+            materia.getNombre(), 
+            materia.getAnioMateria()
         });
     }
 
@@ -331,7 +351,29 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
         DefaultTableModel modeloTabla = (DefaultTableModel) jTabla.getModel();
         modeloTabla.setRowCount(0);
     }
-
+    
+    private void actualizarTablaMateriasInscriptas(Alumno alumno) {
+        limpiarTabla();
+        InscripcionData iData=new InscripcionData();
+      Alumno alumnoSeleccionado = (Alumno) ListaAlumnosComboBox.getSelectedItem();
+          for(Materia mate:iData.obtenerMateriasCursadas(alumnoSeleccionado.getIdAlumno()) ) {
+              cargarDatos(mate);
+              
+          }
+                   
+    }
+        private void actualizarTablaMateriasNoInscriptas(Alumno alumno) {
+             limpiarTabla();
+        InscripcionData iData=new InscripcionData();
+      Alumno alumnoSeleccionado = (Alumno) ListaAlumnosComboBox.getSelectedItem();
+          for(Materia mate:iData.obtenerMateriaNOCursadas(alumnoSeleccionado.getIdAlumno()) ) {
+              cargarDatos(mate);
+              
+          }
+            
+            
+            
+        }
 }//----fin clase
 
 
