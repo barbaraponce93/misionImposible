@@ -40,6 +40,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu11 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(450, 500));
 
         setTitle("Gestión \"Universidad\"");
 
