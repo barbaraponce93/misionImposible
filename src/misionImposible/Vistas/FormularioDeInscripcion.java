@@ -202,23 +202,19 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ListaAlumnosComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaAlumnosComboBoxActionPerformed
-       Object selectedItem = ListaAlumnosComboBox.getSelectedItem();
-      
-        if (selectedItem instanceof Alumno) {
-            Alumno alumnoSeleccionado = (Alumno) selectedItem;
-            limpiarTabla();
+
     }//GEN-LAST:event_ListaAlumnosComboBoxActionPerformed
-    }
+   
     private void jRmateriasInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRmateriasInscriptasActionPerformed
             jBInscribir.setEnabled(false);
           jBAnularInscripcion.setEnabled(true);
 
             InscripcionData iData = new InscripcionData();
             Alumno alumnoSeleccionado = (Alumno) ListaAlumnosComboBox.getSelectedItem();
-            if (alumnoSeleccionado != null) {
-                ArrayList<Inscripcion> inscripciones = new ArrayList<>();
-
-            }
+//            if (alumnoSeleccionado != null) {
+//                ArrayList<Inscripcion> inscripciones = new ArrayList<>();
+//
+//            }
 
             limpiarTabla();
             for (Materia materia: iData.obtenerMateriasCursadas(alumnoSeleccionado.getIdAlumno())) {
