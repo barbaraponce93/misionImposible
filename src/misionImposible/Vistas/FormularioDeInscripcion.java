@@ -202,9 +202,22 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ListaAlumnosComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaAlumnosComboBoxActionPerformed
+<<<<<<< Updated upstream
 
     }//GEN-LAST:event_ListaAlumnosComboBoxActionPerformed
    
+=======
+       Object selectedItem = ListaAlumnosComboBox.getSelectedItem();
+      
+        if (selectedItem instanceof Alumno) {
+            Alumno alumnoSeleccionado = (Alumno) selectedItem;
+            limpiarTabla();
+ //   jRmateriasInscriptas.setSelected(false); cambios propuestos por Francisco
+ //   jRMatNoInscriptas.setSelected(false);
+        }
+    }//GEN-LAST:event_ListaAlumnosComboBoxActionPerformed
+    
+>>>>>>> Stashed changes
     private void jRmateriasInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRmateriasInscriptasActionPerformed
             jBInscribir.setEnabled(false);
           jBAnularInscripcion.setEnabled(true);
