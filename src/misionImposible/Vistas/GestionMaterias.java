@@ -1,6 +1,6 @@
 package misionImposible.Vistas;
 
-import misionImposible.AccesoADatos.Conexion;
+import javax.swing.JOptionPane;
 import misionImposible.AccesoADatos.MateriaData;
 import misionImposible.entidades.Materia;
 
@@ -22,7 +22,6 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel5 = new javax.swing.JLabel();
-        rbEstado = new javax.swing.JRadioButton();
         btnBuscar = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -35,6 +34,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         tfNombre = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         tfAño = new javax.swing.JTextField();
+        rbEstado = new javax.swing.JCheckBox();
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel5.setText("Estado");
@@ -47,6 +47,11 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         });
 
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 0, 0));
@@ -63,6 +68,11 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         jLabel2.setText("Código");
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setText("Salir");
 
@@ -84,43 +94,39 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                         .addGap(290, 290, 290)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(268, 268, 268)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(69, 69, 69)
-                                .addComponent(rbEstado))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(btnNuevo))
-                                .addGap(51, 51, 51)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfAño, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(btnEliminar)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnGuardar)
-                                            .addGap(50, 50, 50)
-                                            .addComponent(btnSalir))
-                                        .addComponent(tfNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(btnNuevo)
+                            .addComponent(jLabel5))
+                        .addGap(51, 51, 51)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbEstado)
+                            .addComponent(tfAño, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btnEliminar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnGuardar)
+                                    .addGap(50, 50, 50)
+                                    .addComponent(btnSalir))
+                                .addComponent(tfNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(267, 267, 267)
+                        .addComponent(jLabel1)))
                 .addContainerGap(119, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(57, 57, 57)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -133,9 +139,9 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(tfAño, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(52, 52, 52)
-                        .addComponent(rbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(64, 64, 64)
+                        .addComponent(rbEstado)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo)
                     .addComponent(btnEliminar)
@@ -147,6 +153,85 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+
+        int respuesta =JOptionPane.showConfirmDialog(null,
+            "Desea eliminar esta materia","Eliminar materia",JOptionPane.OK_OPTION);
+
+        if (respuesta == 0){
+            int id = Integer.parseInt(tfCodigo.getText());
+            MateriaData a = new MateriaData(); // creo objeto
+            a.eliminarMateria(id); //accedo a metodo y paso parametro
+            limpiarCampos();
+        }
+
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+
+        try {
+
+            MateriaData a = new MateriaData(); //instancio nuevo objeto para acceder a los metodos
+            int id = Integer.parseInt(tfCodigo.getText());
+            Materia materiaEncontrada =a.buscarMateria(id); //instancio una materia para acceder a get/set
+            if(materiaEncontrada != null){
+                tfNombre.setText(materiaEncontrada.getNombre());
+                tfAño.setText(Integer.toString(materiaEncontrada.getAnioMateria()));
+
+                btnGuardar.setEnabled(false);
+                btnNuevo.setEnabled(false);
+            }
+            else {
+                limpiarCampos();
+            }
+
+        } catch (Exception ex ){
+            JOptionPane.showMessageDialog(null,"error" );
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+
+        try{
+            int respuesta =JOptionPane.showConfirmDialog(null,
+            "Desea agregar una materia?","Eliminar materia",JOptionPane.OK_OPTION);
+            if (respuesta == 0){
+                tfCodigo.setEnabled(false); //deshabilito boton de codigo 
+                JOptionPane.showMessageDialog(null, "Ingrese nombre, año y estado"); //mensaje de los campos a llenar
+                
+                //obtengo datos ingresados
+                String nombreMateria = tfNombre.getText();
+                boolean estadoAño = rbEstado.isSelected();
+                int añoMateria = Integer.parseInt(tfAño.getText());
+                
+                //creo objetos de las clases para acceder a metodos
+                MateriaData mat = new MateriaData();
+                Materia materia = new Materia();
+                materia.setAnioMateria(añoMateria);
+                materia.setActivo(estadoAño);
+                materia.setNombre(nombreMateria);
+                
+                mat.guardarMateria(materia); //guardo materia en la db
+                limpiarCampos();
+                 tfCodigo.setEnabled(true);
+            } 
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Error en el metodo btnNuevo");
+        }
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+
+        try{
+            
+            
+            
+        } catch (Exception ex){
+            
+        }
+        
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
     public  void limpiarCampos(){
         rbEstado.setEnabled(false);
         tfAño.setText("");
@@ -154,31 +239,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         tfNombre.setText("");
     }
     
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-
-        MateriaData a = new MateriaData(); //instancio nuevo objeto para acceder a los metodos
-        int id = Integer.parseInt(tfCodigo.getText());
-        Materia materiaEncontrada =a.buscarMateria(id); //instancio una materia para acceder a get/set
-        tfNombre.setText(materiaEncontrada.getNombre());
-        tfAño.setText(Integer.toString(materiaEncontrada.getAnioMateria()));
-        rbEstado.setSelected(materiaEncontrada.isActivo());
-        btnGuardar.setEnabled(false);
-        limpiarCampos();
-
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-
-        MateriaData a = new MateriaData(); // creo objeto
-        int id = Integer.parseInt(tfCodigo.getText());
-        a.eliminarMateria(id); //accedo a metodo y paso parametro
-        limpiarCampos();
-
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
@@ -190,7 +251,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JRadioButton rbEstado;
+    private javax.swing.JCheckBox rbEstado;
     private javax.swing.JTextField tfAño;
     private javax.swing.JTextField tfCodigo;
     private javax.swing.JTextField tfNombre;
