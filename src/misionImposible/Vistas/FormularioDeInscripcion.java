@@ -221,7 +221,7 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
         InscripcionData iData = new InscripcionData();
         Alumno alumnoSeleccionado = (Alumno) ListaAlumnosComboBox.getSelectedItem();//obtengo el alumno seleccionado
 
-        limpiarTabla();
+        limpiarTabla();//
 
         for (Materia materia : iData.obtenerMateriasCursadas(alumnoSeleccionado.getIdAlumno())) {// traemos las materias en las que el alumno seleccionado esta inscripto
             cargarDatos(materia);// le decimos la tabla que cargue los datos de las materias

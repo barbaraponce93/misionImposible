@@ -83,6 +83,11 @@ public  cargaDeNotas() {
         }
 
         jbotonGuardar.setText("Guardar");
+        jbotonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbotonGuardarActionPerformed(evt);
+            }
+        });
 
         jbotonSalir.setText("Salir");
         jbotonSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +174,10 @@ public  cargaDeNotas() {
             }
         }
     }//GEN-LAST:event_jcbAlumnoActionPerformed
+
+    private void jbotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbotonGuardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbotonGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
