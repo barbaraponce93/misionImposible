@@ -16,7 +16,9 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     public GestionMaterias() {
         initComponents();
     }
-
+    //variable para interpretar si el btn guardar es para crear o actualizar
+    private boolean operacion = false; 
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -36,7 +38,9 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         tfAño = new javax.swing.JTextField();
         rbEstado = new javax.swing.JCheckBox();
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        setPreferredSize(new java.awt.Dimension(450, 470));
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         jLabel5.setText("Estado");
 
         btnBuscar.setText("Buscar");
@@ -53,7 +57,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 0, 0));
         jLabel1.setText("Materias");
 
@@ -64,7 +68,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         jLabel2.setText("Código");
 
         btnGuardar.setText("Guardar");
@@ -75,11 +79,16 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         });
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         jLabel3.setText("Nombre");
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         jLabel4.setText("Año");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -87,67 +96,65 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jLabel2)
-                        .addGap(290, 290, 290)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
-                            .addComponent(btnNuevo)
-                            .addComponent(jLabel5))
-                        .addGap(51, 51, 51)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel2))
+                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfAño, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(rbEstado)
-                            .addComponent(tfAño, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnEliminar)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnGuardar)
-                                    .addGap(50, 50, 50)
-                                    .addComponent(btnSalir))
-                                .addComponent(tfNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBuscar))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(267, 267, 267)
-                        .addComponent(jLabel1)))
-                .addContainerGap(119, Short.MAX_VALUE))
+                        .addComponent(btnNuevo)
+                        .addGap(32, 32, 32)
+                        .addComponent(btnEliminar)
+                        .addGap(34, 34, 34)
+                        .addComponent(btnGuardar)
+                        .addGap(38, 38, 38)
+                        .addComponent(btnSalir)))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(36, 36, 36)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(tfAño, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(64, 64, 64)
-                        .addComponent(rbEstado)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                            .addComponent(tfAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(51, 51, 51)
+                        .addComponent(jLabel5))
+                    .addComponent(rbEstado))
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo)
                     .addComponent(btnEliminar)
                     .addComponent(btnGuardar)
                     .addComponent(btnSalir))
-                .addGap(59, 59, 59))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();
@@ -157,7 +164,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
 
         int respuesta =JOptionPane.showConfirmDialog(null,
             "Desea eliminar esta materia","Eliminar materia",JOptionPane.OK_OPTION);
-
+        
         if (respuesta == 0){
             int id = Integer.parseInt(tfCodigo.getText());
             MateriaData a = new MateriaData(); // creo objeto
@@ -168,69 +175,83 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-
-        try {
-
+            
+            if("".equals(tfCodigo.getText()) ){ //si el campo codigo es vacio envio mensaje
+                JOptionPane.showMessageDialog(null, "Debe ingresar un id");
+            }
+            
             MateriaData a = new MateriaData(); //instancio nuevo objeto para acceder a los metodos
-            int id = Integer.parseInt(tfCodigo.getText());
+            int id = Integer.parseInt(tfCodigo.getText()); //obtengo el id ingresado para poder hacer la busqueda
             Materia materiaEncontrada =a.buscarMateria(id); //instancio una materia para acceder a get/set
+            
             if(materiaEncontrada != null){
+                //obtengo los datos de la materia encontrada en la bd
+                boolean estado = materiaEncontrada.isActivo(); // creo variable bool para guardar el estado de la materia
                 tfNombre.setText(materiaEncontrada.getNombre());
                 tfAño.setText(Integer.toString(materiaEncontrada.getAnioMateria()));
-
-                btnGuardar.setEnabled(false);
-                btnNuevo.setEnabled(false);
+                if(estado){ //verifico si el estado de la materia es activo o no (tonto pq no puede buscar materia eliminada)
+                    rbEstado.setSelected(true);
+                }else{
+                    rbEstado.setSelected(false);
+                }
             }
             else {
                 limpiarCampos();
             }
-
-        } catch (Exception ex ){
-            JOptionPane.showMessageDialog(null,"error" );
-        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-
-        try{
-            int respuesta =JOptionPane.showConfirmDialog(null,
-            "Desea agregar una materia?","Eliminar materia",JOptionPane.OK_OPTION);
-            if (respuesta == 0){
-                tfCodigo.setEnabled(false); //deshabilito boton de codigo 
-                JOptionPane.showMessageDialog(null, "Ingrese nombre, año y estado"); //mensaje de los campos a llenar
-                
-                //obtengo datos ingresados
-                String nombreMateria = tfNombre.getText();
-                boolean estadoAño = rbEstado.isSelected();
-                int añoMateria = Integer.parseInt(tfAño.getText());
-                
-                //creo objetos de las clases para acceder a metodos
-                MateriaData mat = new MateriaData();
-                Materia materia = new Materia();
-                materia.setAnioMateria(añoMateria);
-                materia.setActivo(estadoAño);
-                materia.setNombre(nombreMateria);
-                
-                mat.guardarMateria(materia); //guardo materia en la db
-                limpiarCampos();
-                 tfCodigo.setEnabled(true);
-            } 
-        } catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Error en el metodo btnNuevo");
-        }
+            
+            //preparo los campos para agregar una nueva materia
+            JOptionPane.showMessageDialog(null, "Estas por crear una materia");
+            limpiarCampos();
+            rbEstado.setEnabled(true);
+            tfNombre.setEnabled(true);
+            tfAño.setEnabled(true);
+            tfCodigo.setEnabled(false);
+            operacion = true; // al hacer click activa operacion en true para crear materia
+            
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-
-        try{
+        
+        //verifico si operacion, si es true es porque se le agrego al hacer click en el boton nuevo
+        if(operacion){
+            JOptionPane.showMessageDialog(null, "Estas por crear una materia");
+            tfCodigo.setEnabled(false); //deshabilito boton de codigo porque al id lo crea la bd.
+            //obtengo datos ingresados
+            String nombreMateria = tfNombre.getText();
+            boolean estadoAño = rbEstado.isSelected();
+            int añoMateria = Integer.parseInt(tfAño.getText());
             
+            //creo objetos de las clases para acceder a metodos
+            MateriaData mat = new MateriaData();
+            Materia materia = new Materia();
+            materia.setAnioMateria(añoMateria);
+            materia.setActivo(estadoAño);
+            materia.setNombre(nombreMateria);
             
+            mat.guardarMateria(materia); //guardo materia en la db
+            limpiarCampos();
+            tfCodigo.setEnabled(true);
+        }else{ //si no se le dio un valor y por defecto es false, entra a actualizar la materia que se buscó
+            JOptionPane.showMessageDialog(null, "Estas por actualizar una materia");
+            MateriaData mat = new MateriaData();
+            Materia materia = new Materia();
             
-        } catch (Exception ex){
+            materia.setNombre(tfNombre.getText());
+            materia.setAnioMateria(Integer.parseInt(tfAño.getText()));
+            materia.setActivo(rbEstado.isSelected());
+            materia.setIdMateria(Integer.parseInt(tfCodigo.getText())) ;
+            
+            mat.modificarMateria(materia);
             
         }
-        
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     public  void limpiarCampos(){
         rbEstado.setEnabled(false);
@@ -238,7 +259,6 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         tfCodigo.setText("");
         tfNombre.setText("");
     }
-    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
