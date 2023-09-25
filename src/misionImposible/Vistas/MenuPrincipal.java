@@ -40,13 +40,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(450, 500));
 
         setTitle("Gestión \"Universidad\"");
 
         escritorio.setPreferredSize(new java.awt.Dimension(700, 600));
         escritorio.setPreferredSize(new java.awt.Dimension(700, 600));
 
+        jMFomularioAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/misionImposible/Vistas/images/graduated.jpg"))); // NOI18N
         jMFomularioAlumno.setText("Alumno");
 
         jMenuItem1.setText("Formulario de Alumno");
@@ -59,6 +59,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMFomularioAlumno);
 
+        jMMateria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/misionImposible/Vistas/images/stack-of-books (1).png"))); // NOI18N
         jMMateria.setText("Materia");
 
         jMFormularioMateria.setText("Formulario de Materia");
@@ -71,6 +72,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMMateria);
 
+        jMAdministracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/misionImposible/Vistas/images/leader (1).png"))); // NOI18N
         jMAdministracion.setText("Administracion");
 
         jMInscripciones.setText("Manejo de inscripciones");
@@ -91,6 +93,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMAdministracion);
 
+        jMAlumnosPorMateria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/misionImposible/Vistas/images/consulting (1).png"))); // NOI18N
         jMAlumnosPorMateria.setText("Consultas");
         jMAlumnosPorMateria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +111,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMAlumnosPorMateria);
 
+        jMSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/misionImposible/Vistas/images/logout (1).png"))); // NOI18N
         jMSalir.setText("Salir");
         jMenuBar1.add(jMSalir);
 
@@ -117,11 +121,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
+            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
         );
 
         pack();
