@@ -23,10 +23,11 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
     
     private DefaultTableModel modeloTabla=new DefaultTableModel();
     private ButtonGroup buttonGroup = new ButtonGroup();// un grupo de botones de radio solo uno de ellos puede estar seleccionado a la vez.
-
+ InscripcionData iData;
     
     public FormularioDeInscripcion() {
         initComponents();
+        new InscripcionData();
          cargarComboBox();
          armarCabecera();
          buttonGroup.add(jRmateriasInscriptas);
@@ -208,9 +209,9 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ListaAlumnosComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaAlumnosComboBoxActionPerformed
-
+            
           limpiarTabla(); // Limpia la tabla al seleccionar otro alumno
-           buttonGroup.clearSelection(); // quita la sellecion de los botones radio
+           buttonGroup.clearSelection(); // quita la seleccion de los botones radio
 
     }//GEN-LAST:event_ListaAlumnosComboBoxActionPerformed
    
@@ -218,7 +219,7 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
         jBInscribir.setEnabled(false);//anula el boton inscribir
         jBAnularInscripcion.setEnabled(true);//activa anular inscripcion
 
-        InscripcionData iData = new InscripcionData();
+      
         Alumno alumnoSeleccionado = (Alumno) ListaAlumnosComboBox.getSelectedItem();//obtengo el alumno seleccionado
 
         limpiarTabla();//
@@ -235,7 +236,7 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
        jBAnularInscripcion.setEnabled(false);
        jBInscribir.setEnabled(true);
        
-            InscripcionData iData = new InscripcionData();
+           
             Alumno alumnoSeleccionado = (Alumno) ListaAlumnosComboBox.getSelectedItem();//obtengo el alumno seleccionado
 
               limpiarTabla();
@@ -247,7 +248,7 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jRMatNoInscriptasActionPerformed
 
     private void jBAnularInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnularInscripcionActionPerformed
-        InscripcionData iData=new InscripcionData();
+    
         
         int filaSeleccionada=jTabla.getSelectedRow();// traigo la fila seleccionada
         int idMateria=(Integer)jTabla.getValueAt(filaSeleccionada, 0);//getValue extrae el dato de la columna que necesitamos (en este caso 0 es la posicion del id)y lo extrae un Objeto por eso se debe castear
@@ -265,7 +266,7 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBAnularInscripcionActionPerformed
 
     private void jBInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInscribirActionPerformed
-        InscripcionData iData = new InscripcionData();
+       
         Alumno alumnoSeleccionado = (Alumno) ListaAlumnosComboBox.getSelectedItem();//obtengo el alumno seleccionado
         
         int filaSeleccionada = jTabla.getSelectedRow();// traigo la fila seleccionada
@@ -337,7 +338,7 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
     // tal vez se pudo hacer en un solo metodo, pero no lo logre.
     private void actualizarTablaMateriasInscriptas(Alumno alumno) {
         limpiarTabla();
-        InscripcionData iData=new InscripcionData();
+        
       Alumno alumnoSeleccionado = (Alumno) ListaAlumnosComboBox.getSelectedItem();
           for(Materia mate:iData.obtenerMateriasCursadas(alumnoSeleccionado.getIdAlumno()) ) {
               cargarDatos(mate);
@@ -347,7 +348,7 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
     }
         private void actualizarTablaMateriasNoInscriptas(Alumno alumno) {
              limpiarTabla();
-        InscripcionData iData=new InscripcionData();
+       
       Alumno alumnoSeleccionado = (Alumno) ListaAlumnosComboBox.getSelectedItem();
           for(Materia mate:iData.obtenerMateriaNOCursadas(alumnoSeleccionado.getIdAlumno()) ) {
               cargarDatos(mate);

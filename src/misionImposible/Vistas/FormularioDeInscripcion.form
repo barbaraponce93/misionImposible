@@ -40,7 +40,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Component id="escritorioInscripciones" min="-2" pref="399" max="-2" attributes="0"/>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="55" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="497" max="-2" attributes="0"/>
           </Group>
