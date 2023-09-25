@@ -232,6 +232,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             materia.setNombre(nombreMateria);
             
             mat.guardarMateria(materia); //guardo materia en la db
+            JOptionPane.showMessageDialog(null, "Materia agregada");
             limpiarCampos();
             tfCodigo.setEnabled(true);
         }else{ //si no se le dio un valor y por defecto es false, entra a actualizar la materia que se buscó
@@ -245,7 +246,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             materia.setIdMateria(Integer.parseInt(tfCodigo.getText())) ;
             
             mat.modificarMateria(materia);
-            
+            JOptionPane.showMessageDialog(null, "Materia actualizada");
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
