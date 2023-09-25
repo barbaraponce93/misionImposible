@@ -102,7 +102,7 @@ public class InscripcionData {
                 Inscripcion inscripcion = new Inscripcion();
 
                 inscripcion.setIdInscripto(rs.getInt("idInscripto"));
-                inscripcion.setNota(rs.getInt("nota"));
+                inscripcion.setNota(rs.getDouble("nota"));
 
                 Alumno a = aluData.buscarAlumno(rs.getInt("idAlumno"));
                 inscripcion.setAlumno(a);//COLOCA LA INF DEL ALUMNO PASADO POR ID

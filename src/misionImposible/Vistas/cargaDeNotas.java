@@ -15,6 +15,9 @@ import misionImposible.entidades.Inscripcion;
 
 public class cargaDeNotas extends javax.swing.JInternalFrame {
 private DefaultTableModel modelo = new DefaultTableModel();
+public boolean isCellEditable(int fila,int columna){
+        return false;
+    }
 public List<Alumno> alumno = new ArrayList<>();
 public List<Inscripcion> insc = new ArrayList<>();
 private int idAlumno;
@@ -236,7 +239,7 @@ public  cargaDeNotas() {
                 JOptionPane.showMessageDialog(null, "Por favor, ingrese una nota válida");
             }
         } while (aux);
-        nota = Math.round(nota * Math.pow(10,2)) / Math.pow(10,2);
+        nota = Math.round(nota * Math.pow(10,2)) / Math.pow(10,2);// formula para acotar los decimales a dos 
         return nota;
     }
 //------------------------------------------------------------------------------
