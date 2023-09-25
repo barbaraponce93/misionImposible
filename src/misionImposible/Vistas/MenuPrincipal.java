@@ -27,6 +27,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         escritorio = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMFomularioAlumno = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -45,6 +46,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         escritorio.setPreferredSize(new java.awt.Dimension(700, 600));
         escritorio.setPreferredSize(new java.awt.Dimension(700, 600));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/misionImposible/Vistas/images/logo-ulp.png"))); // NOI18N
+        escritorio.add(jLabel1);
+        jLabel1.setBounds(150, 70, 290, 240);
 
         jMFomularioAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/misionImposible/Vistas/images/graduated.jpg"))); // NOI18N
         jMFomularioAlumno.setText("Alumno");
@@ -233,6 +238,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMAdministracion;
     private javax.swing.JMenu jMAlumnosPorMateria;
     private javax.swing.JMenu jMFomularioAlumno;
