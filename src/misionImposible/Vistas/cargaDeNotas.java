@@ -14,10 +14,11 @@ import misionImposible.entidades.Inscripcion;
 
 
 public class cargaDeNotas extends javax.swing.JInternalFrame {
-private DefaultTableModel modelo = new DefaultTableModel();
+private DefaultTableModel modelo = new DefaultTableModel(){
 public boolean isCellEditable(int fila,int columna){
         return false;
     }
+};
 public List<Alumno> alumno = new ArrayList<>();
 public List<Inscripcion> insc = new ArrayList<>();
 private int idAlumno;
