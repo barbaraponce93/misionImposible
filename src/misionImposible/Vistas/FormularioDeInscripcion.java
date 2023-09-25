@@ -23,7 +23,7 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
     
     private DefaultTableModel modeloTabla=new DefaultTableModel();
     private ButtonGroup buttonGroup = new ButtonGroup();// un grupo de botones de radio solo uno de ellos puede estar seleccionado a la vez.
- InscripcionData iData=new InscripcionData();
+    InscripcionData iData=new InscripcionData();
     
     public FormularioDeInscripcion() {
         initComponents();
