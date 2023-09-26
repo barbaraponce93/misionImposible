@@ -167,7 +167,7 @@ public  cargaDeNotas() {
         String[] aux = seleccion.split(",");
         modelo.setRowCount(0);
 
-        if (!seleccion.equals("  -- Seleccionar Item -- ")) {
+  //      if (!seleccion.equals("  -- Seleccionar Item -- ")) {
             // encontrar el id del alumno
             for (Alumno alu : this.alumno) {
 
@@ -179,7 +179,7 @@ public  cargaDeNotas() {
             // obtener la lista de materias a las que esta inscripto el alumno
           //  insc = null;
             muestraCargadeNota_en_Tabla();
-        }
+ //       }
     }//GEN-LAST:event_jcbAlumnoActionPerformed
 
     private void jbotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbotonGuardarActionPerformed
@@ -217,7 +217,7 @@ public  cargaDeNotas() {
     private void muestraCargadeNota_en_Tabla(){
         
         insc = i.obtenerInscripcionesPorAlumno(idAlumno);
-        modelo.setRowCount(0);// borra la tabla
+        //modelo.setRowCount(0);// borra la tabla
 
         for (Inscripcion inscricpion : insc) {
             modelo.addRow(new Object[]{inscricpion.getMateria().getIdMateria(),
@@ -271,7 +271,7 @@ public  cargaDeNotas() {
         
         alumno = a.listarAlumnos();
         jcbAlumno.removeAllItems();
-        jcbAlumno.addItem("  -- Seleccionar Item -- ");
+   //     jcbAlumno.addItem("  -- Seleccionar Item -- ");
         
         for (Alumno aux:this.alumno){// agrega datos de la lista al comboBox       
             jcbAlumno.addItem(aux.getDni()+", "+aux.getApellido()+" ,"+aux.getNombre());       
