@@ -119,10 +119,14 @@ private DefaultTableModel modelo=new DefaultTableModel();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jcbMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMateriasActionPerformed
-        Materia selectedItem = (Materia) jcbMaterias.getSelectedItem();
+        
+        
+        Materia selectedItem = (Materia) jcbMaterias.getSelectedItem();//capturo la materia seleccionada
         InscripcionData iData = new InscripcionData();
             
-            limpiarTabla();
+        /*limpia la tabla al seleccionar una materia, recorre la lista de alumnos
+        a traves del idmateria y carga los alumnos inscriptos en la materia seleccionada*/
+     //       limpiarTabla();
             for (Alumno alumno: iData.obtenerAlumnosXMateria(selectedItem.getIdMateria())) {
                 cargarDatos(alumno);
     } 
