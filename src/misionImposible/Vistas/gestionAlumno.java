@@ -11,23 +11,24 @@ import misionImposible.entidades.Alumno;
 
 
 public class gestionAlumno extends javax.swing.JInternalFrame {
-    public int idUltimaBusqueda;
+    public int idUltimaBusqueda;//guarda el id del alumno cuando hago una busqueda
    
     public gestionAlumno() {
         initComponents();
-        activar_o_Desactivar_CamposYBotonesAlumno(false);
+        activar_o_Desactivar_CamposYBotonesAlumno(false);// todos los botones van a estar desactivados al iniciar
         botonNuevo.setEnabled(true);
         jCheckBoxEstado.setEnabled(true);
 
         jdFechaNacimientoAlumno.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            //evento para ACTIVAR el boton guardar cuando quieras modificar la fecha
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                if ("date".equals(evt.getPropertyName())) {
+                if ("date".equals(evt.getPropertyName())) {//captura el evento donde cambio la fecha
 
                     java.util.Date fechaUltima = (java.util.Date) evt.getOldValue();
                     java.util.Date fechaActual = (java.util.Date) evt.getNewValue();
 //                    System.out.println("Fecha seleccionada: " + fechaActual);
 //                    System.out.println("Fecha ultima: " + fechaUltima);
-                    if (!botonNuevo.isEnabled() && (fechaUltima != null) && (fechaUltima != fechaActual)) {
+                    if (!botonNuevo.isEnabled() && (fechaUltima != null) && (fechaUltima != fechaActual)) { //
                         botonEliminar.setEnabled(false);
                         botonGuardar.setEnabled(true);
                     }
@@ -283,7 +284,7 @@ public class gestionAlumno extends javax.swing.JInternalFrame {
                 jCheckBoxEstado.setEnabled(false);
                 jdFechaNacimientoAlumno.setDate(Date.valueOf(alumno.getfechaNacimiento()));  
                   
-            }else{ //no encontro el alumno en la base de datos con el dni
+            }else{ //no encontro el alumno en la base de datos con el dni deja todo como en el inicio
                   limpiarCamposGestionAlumno();
                   activar_o_Desactivar_CamposYBotonesAlumno(false);
                   botonNuevo.setEnabled(true);
@@ -303,9 +304,10 @@ public class gestionAlumno extends javax.swing.JInternalFrame {
        
         if (c < '0' || c > '9'){ 
             jtDniAlumno.setToolTipText("Ingresar solo números");            
-            evt.consume(); 
+            evt.consume(); //captura el evento, evt es el parametro
         }
         if (jtDniAlumno.getText().length() >= 9){
+             
             evt.consume();
         }
     }//GEN-LAST:event_jtDniAlumnoKeyTyped
@@ -404,7 +406,7 @@ public class gestionAlumno extends javax.swing.JInternalFrame {
                activar_o_Desactivar_CamposYBotonesAlumno(false);
                botonNuevo.setEnabled(true);
             
-            }else{ // si el boton guardar esta desactivado, va a guardar un alumno nuevo INSERT INTO
+            }else{ // si el boton buscar esta desactivado, va a GUARDAR un alumno nuevo INSERT INTO
               
                AlumnoData alu = new AlumnoData();
                Alumno alumno = new Alumno();
@@ -466,11 +468,6 @@ public class gestionAlumno extends javax.swing.JInternalFrame {
 
     private void jdFechaNacimientoAlumnoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdFechaNacimientoAlumnoPropertyChange
      
-        if ("date".equals(evt.getPropertyName())) {
-            java.util.Date selectedDate = (java.util.Date) evt.getNewValue();
-            System.out.println("Nueva fecha seleccionada: " + selectedDate);
-           
-        }
     }//GEN-LAST:event_jdFechaNacimientoAlumnoPropertyChange
    
 //------------------------------------------------------------------------------------------------------------------
