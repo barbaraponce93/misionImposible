@@ -126,7 +126,7 @@ private DefaultTableModel modelo=new DefaultTableModel();
             
         /*limpia la tabla al seleccionar una materia, recorre la lista de alumnos
         a traves del idmateria y carga los alumnos inscriptos en la materia seleccionada*/
-     //       limpiarTabla();
+            limpiarTabla();
             for (Alumno alumno: iData.obtenerAlumnosXMateria(selectedItem.getIdMateria())) {
                 cargarDatos(alumno);
     } 
@@ -155,10 +155,8 @@ private void armarCabecera(){
 
 private void cargarCombo(){
    
-    MateriaData mate = new MateriaData();// la creo para buscar el metodo ( validar) ver como limpio el combo box al inicio
+    MateriaData mate = new MateriaData();// la creo para llamar al metodo /  "ver como limpio el combo box al inicio"
     ArrayList<Materia> listaMaterias = (ArrayList<Materia>) mate.listarMaterias();
-    
- //   jcbMaterias.removeAllItems();
     
    
     for (Materia materia : listaMaterias) {
@@ -170,7 +168,7 @@ private void limpiarTabla() {
         DefaultTableModel modeloTabla = (DefaultTableModel) jtAlumnos.getModel();
         modeloTabla.setRowCount(0);
     }
-
+/* por este metodo se cargan los datos de los alumnos a partir de la materia seleccionada*/
 private void cargarDatos(Alumno alumno) {
         modelo.addRow(new Object[]{
             alumno.getIdAlumno(),
