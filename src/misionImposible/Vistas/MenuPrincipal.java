@@ -51,7 +51,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/misionImposible/Vistas/images/logo-ulp.png"))); // NOI18N
         escritorio.add(jLabel1);
-        jLabel1.setBounds(150, 70, 290, 240);
+        jLabel1.setBounds(130, 110, 290, 240);
 
         jMFomularioAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/misionImposible/Vistas/images/graduated.jpg"))); // NOI18N
         jMFomularioAlumno.setText("Alumno");
