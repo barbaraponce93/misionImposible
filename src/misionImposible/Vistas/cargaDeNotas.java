@@ -21,6 +21,7 @@ public boolean isCellEditable(int fila,int columna){
 };
 public List<Alumno> alumno = new ArrayList<>();
 public List<Inscripcion> insc = new ArrayList<>();
+public InscripcionData i = new InscripcionData();
 private int idAlumno;
    
 public  cargaDeNotas() {
@@ -171,35 +172,41 @@ public  cargaDeNotas() {
             // encontrar el id del alumno
             for (Alumno alu : this.alumno) {
 
-                if (Integer.parseInt(aux[0]) == alu.getDni()) {
+                if (Integer.parseInt(aux[0]) == alu.getDni()) { 
                     idAlumno = alu.getIdAlumno();
                     break;
                 }
             }
             // obtener la lista de materias a las que esta inscripto el alumno
-            insc = null;
+          //  insc = null;
             muestraCargadeNota_en_Tabla();
         }
     }//GEN-LAST:event_jcbAlumnoActionPerformed
 
     private void jbotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbotonGuardarActionPerformed
-        
-        int nroFilas = jTablaCargaNotas.getRowCount();
-        int seleccion = jTablaCargaNotas.getSelectedRow();
+    /*El evento del boton guardar muestra un cuadro donde se le pide al usuario que confirme la desición
+      (aceptar o cancelar) si quiere guardar o modificar la nota.
+      Si la respuesta es afirmativa, se fija tanto que el numero de filas sean mayores que cero, y que se se
+      haya seleccionado una fila. En ese caso valida la nota y llama al metodo para actualizar la nota en la base de
+      datos. En el caso de que el nro de filas sea igual a cero, significa que se quiso modificar un elemento
+      pero la tabla esta vacia.El otro caso es que la tabla este cargada (contenga elementos cargados)pero 
+      no se haya seleccionado ninguno*/
+    
+        int nroFilas = jTablaCargaNotas.getRowCount(); //el nro de filas que tiene la tabla
+        int selecFila = jTablaCargaNotas.getSelectedRow();// la fila que se selecciono en la tabla
         double nota=0;
         
-        if ((nroFilas > 0) && (seleccion != -1)) {
+        if ((nroFilas > 0) && (selecFila != -1)) {
 
             int respuesta = JOptionPane.showConfirmDialog(null,
                     "Desea Modificar la nota existente ", "Guardar Nota", JOptionPane.OK_CANCEL_OPTION);
             
-            if (respuesta == 0) {
+            if (respuesta == 0) {// si la respuesta es afirmativa
                 nota =validarNuevaNota();
 
-                InscripcionData i = new InscripcionData();
-                int idMateria = (Integer) modelo.getValueAt(seleccion, 0);
-                i.actualizarNota(idAlumno, idMateria, nota);
-                muestraCargadeNota_en_Tabla();
+                int idMateria = (Integer) modelo.getValueAt(selecFila, 0);//obtiene el valor que contiene en la fila seleccionada en la columna 0
+                i.actualizarNota(idAlumno, idMateria, nota);// modifica la nota en la base de datos           
+                muestraCargadeNota_en_Tabla(); 
             }
         } else if (nroFilas == 0) {
             JOptionPane.showMessageDialog(null, "No se puede Guardar, la tabla no contiene elementos");
@@ -210,9 +217,8 @@ public  cargaDeNotas() {
 //--------------------------------------------------------------------------------------------- 
     private void muestraCargadeNota_en_Tabla(){
         
-        InscripcionData i = new InscripcionData();
         insc = i.obtenerInscripcionesPorAlumno(idAlumno);
-        modelo.setRowCount(0);
+        modelo.setRowCount(0);// borra la tabla
 
         for (Inscripcion inscricpion : insc) {
             modelo.addRow(new Object[]{inscricpion.getMateria().getIdMateria(),
@@ -221,7 +227,14 @@ public  cargaDeNotas() {
     }
 //---------------------------------------------------------------------------------------------
     private double validarNuevaNota(){
-        
+     /*Este metodo muestra un cuadro donde se pide que ingrese un valor(nota)
+       El valor ingresado tiene que ser un número, puede ser un valor real tanto como entero.
+       Como es una nota esos valores estan restringidos a la calificacíon de nota (de 0 a 10).
+       Cualquier valor distinto lo va a tomar como un error.
+       En esta instancia el metodo (Obliga) al usuario a ingresar un valor correcto ya que entra en un bucle 
+       donde la unica forma de salir es ingresar un dato valido
+       Al finalizar una formula para acotar los número decimales dejando el formato (#.00)*/
+     
         double nota = 0;
         boolean aux = true;
 
@@ -240,12 +253,12 @@ public  cargaDeNotas() {
                 JOptionPane.showMessageDialog(null, "Por favor, ingrese una nota válida");
             }
         } while (aux);
-        nota = Math.round(nota * Math.pow(10,2)) / Math.pow(10,2);// formula para acotar los decimales a dos 
-        return nota;
+     
+        return nota = Math.round(nota * Math.pow(10,2)) / Math.pow(10,2);// formula para acotar los decimales a dos 
     }
 //------------------------------------------------------------------------------
     private void armarCabecera() {
-
+        // cabecera de la tabla
         modelo.addColumn("Código");
         modelo.addColumn("Nombre");
         modelo.addColumn("Nota");
@@ -261,8 +274,7 @@ public  cargaDeNotas() {
         jcbAlumno.removeAllItems();
         jcbAlumno.addItem("  -- Seleccionar Item -- ");
         
-        for (Alumno aux:this.alumno){
-        
+        for (Alumno aux:this.alumno){// agrega datos de la lista al comboBox       
             jcbAlumno.addItem(aux.getDni()+", "+aux.getApellido()+" ,"+aux.getNombre());       
         }  
     }
