@@ -41,8 +41,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
-        setResizable(false);
 
         setTitle("Gestión \"Universidad\"");
 

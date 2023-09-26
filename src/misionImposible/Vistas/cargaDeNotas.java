@@ -217,7 +217,7 @@ public  cargaDeNotas() {
     private void muestraCargadeNota_en_Tabla(){
         
         insc = i.obtenerInscripcionesPorAlumno(idAlumno);
-        //modelo.setRowCount(0);// borra la tabla
+        modelo.setRowCount(0);// borra la tabla
 
         for (Inscripcion inscricpion : insc) {
             modelo.addRow(new Object[]{inscricpion.getMateria().getIdMateria(),
