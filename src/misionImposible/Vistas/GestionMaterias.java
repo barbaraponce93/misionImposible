@@ -17,8 +17,8 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         initComponents();
     }
     //variable para interpretar si el btn guardar es para crear o actualizar
-    private boolean operacion = false; 
-    
+    private boolean operacion = false;
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -174,10 +174,10 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
 
-        int respuesta =JOptionPane.showConfirmDialog(null,
-            "Desea eliminar esta materia","Eliminar materia",JOptionPane.OK_OPTION);
-        
-        if (respuesta == 0){
+        int respuesta = JOptionPane.showConfirmDialog(null,
+                "Desea eliminar esta materia", "Eliminar materia", JOptionPane.OK_OPTION);
+
+        if (respuesta == 0) {
             int id = Integer.parseInt(tfCodigo.getText());
             MateriaData a = new MateriaData(); // creo objeto
             a.eliminarMateria(id); //accedo a metodo y paso parametro
@@ -187,76 +187,80 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-            
-            if("".equals(tfCodigo.getText()) ){ //si el campo codigo es vacio envio mensaje
+        try {
+
+            if ("".equals(tfCodigo.getText())) { //si el campo codigo es vacio envio mensaje
                 JOptionPane.showMessageDialog(null, "Debe ingresar un id");
             }
-            
+
             MateriaData a = new MateriaData(); //instancio nuevo objeto para acceder a los metodos
             int id = Integer.parseInt(tfCodigo.getText()); //obtengo el id ingresado para poder hacer la busqueda
-            Materia materiaEncontrada =a.buscarMateria(id); //instancio una materia para acceder a get/set
-            
-            if(materiaEncontrada != null){
+            Materia materiaEncontrada = a.buscarMateria(id); //instancio una materia para acceder a get/set
+
+            if (materiaEncontrada != null) {
                 //obtengo los datos de la materia encontrada en la bd
                 boolean estado = materiaEncontrada.isActivo(); // creo variable bool para guardar el estado de la materia
                 tfNombre.setText(materiaEncontrada.getNombre());
                 tfAño.setText(Integer.toString(materiaEncontrada.getAnioMateria()));
-                if(estado){ //verifico si el estado de la materia es activo o no (tonto pq no puede buscar materia eliminada)
+                if (estado) { //verifico si el estado de la materia es activo o no (tonto pq no puede buscar materia eliminada)
                     rbEstado.setSelected(true);
-                }else{
+                } else {
                     rbEstado.setSelected(false);
                 }
-            }
-            else {
+            } else {
                 limpiarCampos();
             }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Solo puedes buscar por enteros");
+            limpiarCampos();
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-            
-            //preparo los campos para agregar una nueva materia
-            JOptionPane.showMessageDialog(null, "Estas por crear una materia");
-            limpiarCampos();
-            rbEstado.setEnabled(true);
-            tfNombre.setEnabled(true);
-            tfAño.setEnabled(true);
-            tfCodigo.setEnabled(false);
-            operacion = true; // al hacer click activa operacion en true para crear materia
-            
+
+        //preparo los campos para agregar una nueva materia
+        JOptionPane.showMessageDialog(null, "Estas por crear una materia");
+        limpiarCampos();
+        rbEstado.setEnabled(true);
+        tfNombre.setEnabled(true);
+        tfAño.setEnabled(true);
+        tfCodigo.setEnabled(false);
+        operacion = true; // al hacer click activa operacion en true para crear materia
+
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        
+
         //verifico si operacion, si es true es porque se le agrego al hacer click en el boton nuevo
-        if(operacion){
+        if (operacion) {
             JOptionPane.showMessageDialog(null, "Estas por crear una materia");
             tfCodigo.setEnabled(false); //deshabilito boton de codigo porque al id lo crea la bd.
             //obtengo datos ingresados
             String nombreMateria = tfNombre.getText();
             boolean estadoAño = rbEstado.isSelected();
             int añoMateria = Integer.parseInt(tfAño.getText());
-            
+
             //creo objetos de las clases para acceder a metodos
             MateriaData mat = new MateriaData();
             Materia materia = new Materia();
             materia.setAnioMateria(añoMateria);
             materia.setActivo(estadoAño);
             materia.setNombre(nombreMateria);
-            
+
             mat.guardarMateria(materia); //guardo materia en la db
             JOptionPane.showMessageDialog(null, "Materia agregada");
             limpiarCampos();
             tfCodigo.setEnabled(true);
-        }else{ //si no se le dio un valor y por defecto es false, entra a actualizar la materia que se buscó
+        } else { //si no se le dio un valor y por defecto es false, entra a actualizar la materia que se buscó
             JOptionPane.showMessageDialog(null, "Estas por actualizar una materia");
             MateriaData mat = new MateriaData();
             Materia materia = new Materia();
-            
+
             materia.setNombre(tfNombre.getText());
             materia.setAnioMateria(Integer.parseInt(tfAño.getText()));
             materia.setActivo(rbEstado.isSelected());
-            materia.setIdMateria(Integer.parseInt(tfCodigo.getText())) ;
-            
+            materia.setIdMateria(Integer.parseInt(tfCodigo.getText()));
+
             mat.modificarMateria(materia);
             JOptionPane.showMessageDialog(null, "Materia actualizada");
         }
@@ -274,13 +278,13 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNombreActionPerformed
 
-    public  void limpiarCampos(){
+    public void limpiarCampos() {
         rbEstado.setEnabled(false);
         tfAño.setText("");
         tfCodigo.setText("");
         tfNombre.setText("");
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
