@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import jdk.nashorn.internal.runtime.arrays.ArrayLikeIterator;
 import misionImposible.AccesoADatos.AlumnoData;
@@ -124,65 +125,68 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
             escritorioInscripcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(escritorioInscripcionesLayout.createSequentialGroup()
                 .addGroup(escritorioInscripcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(escritorioInscripcionesLayout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(jLabel3))
-                    .addGroup(escritorioInscripcionesLayout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(jLabel1)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioInscripcionesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(escritorioInscripcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioInscripcionesLayout.createSequentialGroup()
-                        .addGap(0, 17, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(jSeparator2))
+                    .addGroup(escritorioInscripcionesLayout.createSequentialGroup()
                         .addGroup(escritorioInscripcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioInscripcionesLayout.createSequentialGroup()
-                                .addGroup(escritorioInscripcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(escritorioInscripcionesLayout.createSequentialGroup()
-                                        .addComponent(jRmateriasInscriptas)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jRMatNoInscriptas))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(escritorioInscripcionesLayout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addGroup(escritorioInscripcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(escritorioInscripcionesLayout.createSequentialGroup()
                                         .addComponent(jBInscribir)
                                         .addGap(44, 44, 44)
                                         .addComponent(jBAnularInscripcion)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jBsalir)))
-                                .addGap(25, 25, 25))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioInscripcionesLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(ListaAlumnosComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31))))))
+                                        .addGap(45, 45, 45)
+                                        .addComponent(jBsalir))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(escritorioInscripcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioInscripcionesLayout.createSequentialGroup()
+                                            .addGap(90, 90, 90)
+                                            .addComponent(jLabel3)
+                                            .addGap(127, 127, 127))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioInscripcionesLayout.createSequentialGroup()
+                                            .addComponent(jRmateriasInscriptas)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jRMatNoInscriptas)))))
+                            .addGroup(escritorioInscripcionesLayout.createSequentialGroup()
+                                .addGap(52, 52, 52)
+                                .addGroup(escritorioInscripcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioInscripcionesLayout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(ListaAlumnosComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(escritorioInscripcionesLayout.createSequentialGroup()
+                                        .addGap(65, 65, 65)
+                                        .addComponent(jLabel1)))))
+                        .addGap(0, 45, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         escritorioInscripcionesLayout.setVerticalGroup(
             escritorioInscripcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioInscripcionesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addGroup(escritorioInscripcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ListaAlumnosComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addGap(25, 25, 25)
                 .addGroup(escritorioInscripcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRMatNoInscriptas)
                     .addComponent(jRmateriasInscriptas))
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addGroup(escritorioInscripcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBsalir)
                     .addComponent(jBAnularInscripcion)
                     .addComponent(jBInscribir))
-                .addGap(37, 37, 37))
+                .addGap(43, 43, 43))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -200,7 +204,7 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addContainerGap()
                 .addComponent(escritorioInscripciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,8 +257,10 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
     
         
         int filaSeleccionada=jTabla.getSelectedRow();// traigo la fila seleccionada
-        int idMateria=(Integer)jTabla.getValueAt(filaSeleccionada, 0);//getValue extrae el dato de la columna que necesitamos (en este caso 0 es la posicion del id)y lo extrae un Objeto por eso se debe castear
         
+        if(filaSeleccionada!=-1){//nos aseguramos que haya una fila seleccionada
+            
+            int idMateria=(Integer)jTabla.getValueAt(filaSeleccionada, 0);//getValue extrae el dato de la columna que necesitamos (en este caso 0 es la posicion del id)y lo extrae un Objeto por eso se debe castear
         
           Alumno alumnoSeleccionado = (Alumno) ListaAlumnosComboBox.getSelectedItem();//obtengo el alumno seleccionado
          
@@ -264,6 +270,11 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
          iData.borrarInscripcionMateriaAlumno(idAlumno, idMateria);//creo la inscripcion sin pasar la nota
        
        actualizarTablaMateriasInscriptas(alumnoSeleccionado);//despues de anular la ins actualiza la tabla de las materias inscriptas actuales
+           
+        } else { 
+            JOptionPane.showMessageDialog(null, "Debe seleccionar la materia en la que desea anular la inscripcion");
+        }
+         
         
     }//GEN-LAST:event_jBAnularInscripcionActionPerformed
 
@@ -272,6 +283,8 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
         Alumno alumnoSeleccionado = (Alumno) ListaAlumnosComboBox.getSelectedItem();//obtengo el alumno seleccionado
         
         int filaSeleccionada = jTabla.getSelectedRow();// traigo la fila seleccionada
+        
+           if(filaSeleccionada!=-1){
      int idMateria = (Integer) jTabla.getValueAt(filaSeleccionada, 0);
 
         Materia materiaSeleccionada = new Materia(idMateria);
@@ -279,7 +292,9 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
 
         iData.guardarIscripcion(insc);
         actualizarTablaMateriasNoInscriptas(alumnoSeleccionado);// despues de inscribir actualiza la tabla de las materias no inscriptas
-       
+       } else { 
+            JOptionPane.showMessageDialog(null, "Debe seleccionar la materia en la que desea inscribirse");
+        }
 
     }//GEN-LAST:event_jBInscribirActionPerformed
 
