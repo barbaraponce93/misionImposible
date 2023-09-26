@@ -271,7 +271,7 @@ public  cargaDeNotas() {
         
         alumno = a.listarAlumnos();
         jcbAlumno.removeAllItems();
-        jcbAlumno.addItem("  -- Seleccionar Item -- ");
+   //     jcbAlumno.addItem("  -- Seleccionar Item -- ");
         
         for (Alumno aux:this.alumno){// agrega datos de la lista al comboBox       
             jcbAlumno.addItem(aux.getDni()+", "+aux.getApellido()+" ,"+aux.getNombre());       
