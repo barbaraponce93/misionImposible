@@ -15,12 +15,13 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
      */
     public GestionMaterias() {
         initComponents();
+        //pongo en falso los campos que por defecto vendran apagados
         btnEliminar.setEnabled(false);
         btnGuardar.setEnabled(false);
         tfNombre.setEnabled(false);
         tfAño.setEnabled(false);
     }
-    //variable para interpretar si el btn guardar es para crear o actualizar
+    //variable se usará para interpretar si el btn guardar es para crear o actualizar
     private boolean operacion = false;
 
     @SuppressWarnings("unchecked")
@@ -216,10 +217,16 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
 
             if ("".equals(tfCodigo.getText())) { //si el campo codigo es vacio envio mensaje
                 JOptionPane.showMessageDialog(null, "Debe ingresar un id");
+                return; //return para terminar la funcion y no arroje mas mensajes
             }
+            //activo campos y botones cuando encuentre un materia
+            btnNuevo.setEnabled(false);
+            btnGuardar.setEnabled(true);
+            btnEliminar.setEnabled(true);
             btnGuardar.setEnabled(true);
             tfNombre.setEnabled(true);
             tfAño.setEnabled(true);
+            
             MateriaData a = new MateriaData(); //instancio nuevo objeto para acceder a los metodos
             int id = Integer.parseInt(tfCodigo.getText()); //obtengo el id ingresado para poder hacer la busqueda
             Materia materiaEncontrada = a.buscarMateria(id); //instancio una materia para acceder a get/set
@@ -234,13 +241,12 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 } else {
                     rbEstado.setSelected(false);
                 }
-                btnEliminar.setEnabled(true);
-                btnGuardar.setEnabled(true);
+                
             } else {
                 limpiarCampos();
             }
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Solo puedes buscar por enteros");
+        } catch (NumberFormatException ex) { //entra al catch en caso de que intente buscar la materia con caracteres
+            JOptionPane.showMessageDialog(null, "Solo puedes ingresar enteros");
             limpiarCampos();
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
@@ -248,14 +254,15 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
 
         //preparo los campos para agregar una nueva materia
-        JOptionPane.showMessageDialog(null, "Estas por crear una materia");
+        JOptionPane.showMessageDialog(null, "Estas por crear una materia"); //mensaje para el usuario
         limpiarCampos();
         rbEstado.setEnabled(true);
         tfNombre.setEnabled(true);
         tfAño.setEnabled(true);
         tfCodigo.setEnabled(false);
         btnBuscar.setEnabled(false);
-        operacion = true; // al hacer click activa operacion en true para crear materia
+        btnGuardar.setEnabled(true);
+        operacion = true; // al hacer click en nuevo activa operacion en true (o sea va a crear una materia)
 
     }//GEN-LAST:event_btnNuevoActionPerformed
 
@@ -288,19 +295,21 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 mat.guardarMateria(materia); //guardo materia en la db
                 limpiarCampos();
                 tfCodigo.setEnabled(true);
-            } catch (NumberFormatException ex) {
+            } catch (NumberFormatException ex) { //entra al catch si intento crear un id con caracteres
                 JOptionPane.showMessageDialog(null, "Solo puedes agregar por enteros");
                 limpiarCampos();
             }
         } else { //si no se le dio un valor y por defecto es false, entra a actualizar la materia que se buscó
             MateriaData mat = new MateriaData();
             Materia materia = new Materia();
-
+            
+            //paso parametros modificados
             materia.setNombre(tfNombre.getText());
             materia.setAnioMateria(Integer.parseInt(tfAño.getText()));
             materia.setActivo(rbEstado.isSelected());
             materia.setIdMateria(Integer.parseInt(tfCodigo.getText()));
-
+            
+            //modifico usando el metodo
             mat.modificarMateria(materia);
             limpiarCampos();
         }
@@ -323,8 +332,12 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         tfCodigo.setText("");
         tfNombre.setText("");
         tfAño.setText("");
-        rbEstado.setSelected(false);
         
+        tfCodigo.setEnabled(true);
+        btnBuscar.setEnabled(true);
+        btnNuevo.setEnabled(true);
+        
+        rbEstado.setSelected(false);
         btnEliminar.setEnabled(false);
         btnGuardar.setEnabled(false);
         tfNombre.setEnabled(false);
