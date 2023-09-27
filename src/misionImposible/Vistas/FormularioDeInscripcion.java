@@ -23,7 +23,7 @@ import misionImposible.entidades.Materia;
 public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
     
     private DefaultTableModel modeloTabla=new DefaultTableModel();
-    private ButtonGroup buttonGroup = new ButtonGroup();// un grupo de botones de radio solo uno de ellos puede estar seleccionado a la vez.
+    private ButtonGroup buttonGroup = new ButtonGroup();
     InscripcionData iData=new InscripcionData();
     
     public FormularioDeInscripcion() {
@@ -217,7 +217,7 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
     private void ListaAlumnosComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaAlumnosComboBoxActionPerformed
             
           limpiarTabla(); // Limpia la tabla al seleccionar otro alumno
-           buttonGroup.clearSelection(); // quita la seleccion de los botones radio
+          buttonGroup.clearSelection(); // quita la seleccion de los botones radio
 
     }//GEN-LAST:event_ListaAlumnosComboBoxActionPerformed
    
@@ -267,7 +267,7 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
           int idAlumno=(Integer)alumnoSeleccionado.getIdAlumno();//obtengo id alumno
            
         
-         iData.borrarInscripcionMateriaAlumno(idAlumno, idMateria);//creo la inscripcion sin pasar la nota
+         iData.borrarInscripcionMateriaAlumno(idAlumno, idMateria);
        
        actualizarTablaMateriasInscriptas(alumnoSeleccionado);//despues de anular la ins actualiza la tabla de las materias inscriptas actuales
            
@@ -285,9 +285,10 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
         int filaSeleccionada = jTabla.getSelectedRow();// traigo la fila seleccionada
         
            if(filaSeleccionada!=-1){
-     int idMateria = (Integer) jTabla.getValueAt(filaSeleccionada, 0);
+           int idMateria = (Integer) jTabla.getValueAt(filaSeleccionada, 0);
 
         Materia materiaSeleccionada = new Materia(idMateria);
+        
         Inscripcion insc = new Inscripcion(alumnoSeleccionado, materiaSeleccionada);
 
         iData.guardarIscripcion(insc);
