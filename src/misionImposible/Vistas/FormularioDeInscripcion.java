@@ -33,6 +33,8 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
          armarCabecera();
          buttonGroup.add(jRmateriasInscriptas);
          buttonGroup.add(jRMatNoInscriptas);
+         jBInscribir.setEnabled(false);
+         jBAnularInscripcion.setEnabled(false);
     }
 
    
