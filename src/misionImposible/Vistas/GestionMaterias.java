@@ -16,6 +16,9 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     public GestionMaterias() {
         initComponents();
         btnEliminar.setEnabled(false);
+        btnGuardar.setEnabled(false);
+        tfNombre.setEnabled(false);
+        tfAño.setEnabled(false);
     }
     //variable para interpretar si el btn guardar es para crear o actualizar
     private boolean operacion = false;
@@ -38,6 +41,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         tfAño = new javax.swing.JTextField();
         rbEstado = new javax.swing.JCheckBox();
+        btnRefresh = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(450, 470));
 
@@ -99,74 +103,93 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             }
         });
 
+        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/misionImposible/Vistas/images/refresh.jpg"))); // NOI18N
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(btnNuevo)
+                .addGap(32, 32, 32)
+                .addComponent(btnEliminar)
+                .addGap(34, 34, 34)
+                .addComponent(btnGuardar)
+                .addGap(38, 38, 38)
+                .addComponent(btnSalir)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(163, 163, 163)
+                .addComponent(jLabel1)
+                .addContainerGap(221, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
+                        .addComponent(jLabel3)
+                        .addGap(26, 26, 26)
+                        .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(32, 32, 32)
+                        .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
                                 .addGap(32, 32, 32)
-                                .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnBuscar))
+                                .addComponent(tfAño, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel5))
-                                .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfAño, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(rbEstado)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(btnNuevo)
-                        .addGap(32, 32, 32)
-                        .addComponent(btnEliminar)
-                        .addGap(34, 34, 34)
-                        .addComponent(btnGuardar)
-                        .addGap(38, 38, 38)
-                        .addComponent(btnSalir))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addComponent(jLabel1)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                                .addGap(40, 40, 40)
+                                .addComponent(rbEstado)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRefresh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(tfAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(42, 42, 42)
+                        .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnNuevo)
-                            .addComponent(btnEliminar)
-                            .addComponent(btnGuardar)
-                            .addComponent(btnSalir)))
-                    .addComponent(rbEstado))
+                            .addComponent(tfAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(rbEstado)))
+                .addGap(60, 60, 60)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNuevo)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnGuardar)
+                    .addComponent(btnSalir))
                 .addGap(51, 51, 51))
         );
 
@@ -194,7 +217,9 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             if ("".equals(tfCodigo.getText())) { //si el campo codigo es vacio envio mensaje
                 JOptionPane.showMessageDialog(null, "Debe ingresar un id");
             }
-
+            btnGuardar.setEnabled(true);
+            tfNombre.setEnabled(true);
+            tfAño.setEnabled(true);
             MateriaData a = new MateriaData(); //instancio nuevo objeto para acceder a los metodos
             int id = Integer.parseInt(tfCodigo.getText()); //obtengo el id ingresado para poder hacer la busqueda
             Materia materiaEncontrada = a.buscarMateria(id); //instancio una materia para acceder a get/set
@@ -210,6 +235,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                     rbEstado.setSelected(false);
                 }
                 btnEliminar.setEnabled(true);
+                btnGuardar.setEnabled(true);
             } else {
                 limpiarCampos();
             }
@@ -228,6 +254,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         tfNombre.setEnabled(true);
         tfAño.setEnabled(true);
         tfCodigo.setEnabled(false);
+        btnBuscar.setEnabled(false);
         operacion = true; // al hacer click activa operacion en true para crear materia
 
     }//GEN-LAST:event_btnNuevoActionPerformed
@@ -237,8 +264,15 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         //verifico si operacion, si es true es porque se le agrego al hacer click en el boton nuevo
         if (operacion) {
             try {
+                btnGuardar.setEnabled(true);
                 JOptionPane.showMessageDialog(null, "Estas por crear una materia");
                 tfCodigo.setEnabled(false); //deshabilito boton de codigo porque al id lo crea la bd.
+                //verifico si el campo nombre está vacio.
+                if(tfNombre.getText().equals("")){
+                    JOptionPane.showMessageDialog(null, "Ingresa un nombre valido");
+                    limpiarCampos();
+                    return; //return para terminar la operación.
+                }
                 //obtengo datos ingresados
                 String nombreMateria = tfNombre.getText();
                 boolean estadoAño = rbEstado.isSelected();
@@ -252,7 +286,6 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 materia.setNombre(nombreMateria);
 
                 mat.guardarMateria(materia); //guardo materia en la db
-                JOptionPane.showMessageDialog(null, "Materia agregada");
                 limpiarCampos();
                 tfCodigo.setEnabled(true);
             } catch (NumberFormatException ex) {
@@ -260,7 +293,6 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 limpiarCampos();
             }
         } else { //si no se le dio un valor y por defecto es false, entra a actualizar la materia que se buscó
-            JOptionPane.showMessageDialog(null, "Estas por actualizar una materia");
             MateriaData mat = new MateriaData();
             Materia materia = new Materia();
 
@@ -270,7 +302,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             materia.setIdMateria(Integer.parseInt(tfCodigo.getText()));
 
             mat.modificarMateria(materia);
-            JOptionPane.showMessageDialog(null, "Materia actualizada");
+            limpiarCampos();
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -286,6 +318,20 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNombreActionPerformed
 
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        tfCodigo.setText("");
+        tfNombre.setText("");
+        tfAño.setText("");
+        rbEstado.setSelected(false);
+        
+        btnEliminar.setEnabled(false);
+        btnGuardar.setEnabled(false);
+        tfNombre.setEnabled(false);
+        tfAño.setEnabled(false);
+        rbEstado.setEnabled(false);
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
     public void limpiarCampos() {
         rbEstado.setEnabled(false);
         tfAño.setText("");
@@ -298,6 +344,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
