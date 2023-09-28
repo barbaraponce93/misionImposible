@@ -22,7 +22,11 @@ import misionImposible.entidades.Materia;
 
 public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
     
-    private DefaultTableModel modeloTabla=new DefaultTableModel();
+    private DefaultTableModel modeloTabla = new DefaultTableModel(){
+public boolean isCellEditable(int fila,int columna){
+        return false;
+    }
+};
     private ButtonGroup buttonGroup = new ButtonGroup();
     InscripcionData iData=new InscripcionData();
     

@@ -163,7 +163,7 @@ private void armarCabecera(){
 
 private void cargarCombo(){
    
-    MateriaData mate = new MateriaData();// la creo para llamar al metodo /  "ver como limpio el combo box al inicio"
+    MateriaData mate = new MateriaData();// la creo para llamar al metodo / 
     ArrayList<Materia> listaMaterias = (ArrayList<Materia>) mate.listarMaterias();
     
    
