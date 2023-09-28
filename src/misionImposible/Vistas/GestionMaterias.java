@@ -208,7 +208,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             a.eliminarMateria(id); //accedo a metodo y paso parametro
             limpiarCampos();
         } else {
-            JOptionPane.showMessageDialog(null, "Debes buscar la materia para eliminar");
+            JOptionPane.showMessageDialog(null, "Debes buscar la materia para eliminar");//este esta al dope
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
@@ -223,7 +223,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             btnNuevo.setEnabled(false);
             btnGuardar.setEnabled(true);
             btnEliminar.setEnabled(true);
-            btnGuardar.setEnabled(true);
+            btnGuardar.setEnabled(true);//
             tfNombre.setEnabled(true);
             tfAño.setEnabled(true);
             
@@ -275,8 +275,8 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Estas por crear una materia");
                 tfCodigo.setEnabled(false); //deshabilito boton de codigo porque al id lo crea la bd.
                 //verifico si el campo nombre está vacio.
-                if(tfNombre.getText().equals("")){
-                    JOptionPane.showMessageDialog(null, "Ingresa un nombre valido");
+                if(tfNombre.getText().equals("") || tfAño.getText().isEmpty() ){
+                    JOptionPane.showMessageDialog(null, "Debes completar todos los campos");
                     limpiarCampos();
                     return; //return para terminar la operación.
                 }
