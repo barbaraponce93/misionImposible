@@ -17,7 +17,6 @@ public class gestionAlumno extends javax.swing.JInternalFrame {
         initComponents();
         activar_o_Desactivar_CamposYBotonesAlumno(false);// todos los botones van a estar desactivados al iniciar
         botonNuevo.setEnabled(true);
-        jCheckBoxEstado.setEnabled(true);
 
         jdFechaNacimientoAlumno.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             //evento para ACTIVAR el boton guardar cuando quieras modificar la fecha
@@ -325,8 +324,8 @@ public class gestionAlumno extends javax.swing.JInternalFrame {
 //-----------------------------------------------------------------------------------
     private void jCheckBoxEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxEstadoActionPerformed
         
-        botonGuardar.setEnabled(true);
-        botonEliminar.setEnabled(false);
+//        botonGuardar.setEnabled(true);
+//        botonEliminar.setEnabled(false);
     }//GEN-LAST:event_jCheckBoxEstadoActionPerformed
 //-----------------------------------------------------------------------------------
     private void jtNombreAlumnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNombreAlumnoKeyTyped
@@ -449,6 +448,7 @@ public class gestionAlumno extends javax.swing.JInternalFrame {
             limpiarCamposGestionAlumno();
             activar_o_Desactivar_CamposYBotonesAlumno(true);
             jCheckBoxEstado.setEnabled(false);
+            jCheckBoxEstado.setSelected(true);
             botonBuscar.setEnabled(false);
             botonEliminar.setEnabled(false);
             botonNuevo.setEnabled(false);
