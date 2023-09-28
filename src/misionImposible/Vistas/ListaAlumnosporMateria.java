@@ -18,7 +18,11 @@ import misionImposible.entidades.Alumno;
  * @author 54911
  */
 public class ListaAlumnosporMateria extends javax.swing.JInternalFrame {
-private DefaultTableModel modelo=new DefaultTableModel();
+private DefaultTableModel modelo = new DefaultTableModel(){
+public boolean isCellEditable(int fila,int columna){
+        return false;
+    }
+};
     /**
      * Creates new form ListaAlumnosporMateria
      */
@@ -59,7 +63,15 @@ private DefaultTableModel modelo=new DefaultTableModel();
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jtAlumnos);
 
         jbSalir.setText("Salir");

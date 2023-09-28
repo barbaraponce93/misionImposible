@@ -270,8 +270,9 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
            
         
          iData.borrarInscripcionMateriaAlumno(idAlumno, idMateria);
+         
        
-       actualizarTablaMateriasInscriptas(alumnoSeleccionado);//despues de anular la ins actualiza la tabla de las materias inscriptas actuales
+          actualizarTablaMateriasInscriptas(alumnoSeleccionado);//despues de anular la ins actualiza la tabla de las materias inscriptas actuales
            
         } else { 
             JOptionPane.showMessageDialog(null, "Debe seleccionar la materia en la que desea anular la inscripcion");
